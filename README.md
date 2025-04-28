@@ -65,9 +65,16 @@ Falls einer der Befehle nicht funktioniert, stelle sicher, dass die Installation
 
 ## Funktionen
 
-**🎨 Gestaltet mit React-Bootstrap und CSS, einfach anpassbare Farben**
+**🎨 Gestaltet mit Angular, Bootstrap und CSS, einfach anpassbare Farben**
 
 **📱 Vollständig responsiv**
+
+In diesem kurs verwenden wir ein Customer Tool, in welchem wir Kunden Anlegen, auflisten, bearbeiten und Löschen können
+<div align="center">
+  <img alt="Demo" src="./images/readme-img-2.png" />
+</div>
+
+<br/>
 
 ## Erste Schritte
 
@@ -87,28 +94,6 @@ Startet die Anwendung im Entwicklungsmodus.\
 Öffnen Sie [http://localhost:4200](http://localhost:4200), um sie im Browser anzusehen.
 Die Seite wird neu geladen, wenn Sie Änderungen vornehmen.
 
-## 📦 Produktion bereitstellen
-
-Um eine produktionsreife Version der Anwendung zu erstellen, führe den folgenden Befehl aus:
-
-### 1. 🚀 Build erstellen
-`npm run build -- --prod` führe Lokal denn befehl
-
-### 2. 📂 Build-Ordner generieren
-Dieser Befehl erstellt einen neuen Ordner namens `/build`, der alle notwendigen Dateien enthält.
-
-### 3. ☁️ Upload auf den Server
-Übertrage den `/build`-Ordner mithilfe eines FTP-Programms wie FileZilla auf deinen Webserver.
-
-### 4. 🔄 Ordner umbenennen
-Um Klarheit in der Ordnerstruktur zu gewährleisten, benenne den `/build`-Ordner in `/meinProjekt` um.
-
-### 5. 🌍 Domain-Verknüpfung
-Richte deine Domain so ein, dass sie auf den `/meinProjekt`-Ordner verweist, damit die Anwendung erreichbar ist.
-
-✨ Jetzt ist deine Anwendung live! 🚀
-
-
 
 ## Programm mit Angular
 
@@ -116,23 +101,11 @@ Richte deine Domain so ein, dass sie auf den `/meinProjekt`-Ordner verweist, dam
 
 Verwenden Sie folgendes HTML-Tag, um zu einer externen Seite zu verlinken:
 
-`<Link to="/">Link zur Startseite</Link>`
+`<a href="/">Link zur Startseite</a>`
 
 ### Für eine Seite auf dieser Angular-Website:
 
 Verwenden Sie folgendes HTML-Tag, um zu einer Seite auf der aktuellen Angular-Website zu verlinken:
 
-`<Link to="/">Link zur Startseite</Link>`
-
-### Verbindung mit der Server-Konsole:
-
-Wenn Sie sich mit der Server-Konsole verbinden müssen, können Sie dies mit den folgenden Schritten tun:
-
-1. Öffnen Sie das Terminal und geben Sie den folgenden Befehl ein `ssh benutzername@server-ip`
-
-2. Geben Sie Ihr korrektes Passwort ein, wenn Sie dazu aufgefordert werden.
-
-### Zeigen Sie Ihre Unterstützung
-
-Geben Sie ein ⭐, wenn Ihnen diese Website gefällt!
+`<a routerLink="/">Link zur Startseite</a>`
 
