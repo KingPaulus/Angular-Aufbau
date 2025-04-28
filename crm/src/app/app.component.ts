@@ -4,8 +4,11 @@ import { NavigationComponent } from './navigation/navigation.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NavigationComponent],
   template: `
+  <app-navigation>
+      {{title}}
+    </app-navigation>
   <div class="container mt-4">
     <router-outlet></router-outlet>
   </div>
