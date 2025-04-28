@@ -2,6 +2,12 @@
     "folders": [
 		{
 			"path": "backend"
+		},
+		{
+			"path": "crm"
+		},
+		{
+			"path": "images"
 		}
 	],
 	"settings": {}
