@@ -1,0 +1,24 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Tom",
+      "credit_limit": 300
+    },
+    {
+      "id": 2,
+      "name": "Matt",
+      "credit_limit": 300
+    },
+    {
+      "id": 3,
+      "name": "Stan",
+      "credit_limit": 300
+    },
+    {
+      "id": 4,
+      "name": "Lee",
+      "credit_limit": 300
+    }
+  ]
+}
