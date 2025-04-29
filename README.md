@@ -109,3 +109,11 @@ Verwenden Sie folgendes HTML-Tag, um zu einer Seite auf der aktuellen Angular-We
 
 `<a routerLink="/">Link zur Startseite</a>`
 
+# NGRX Pakete
+
+es wurden nich weitere pakete mit NGRX hinzugefügt mit:
+
+1. `ng add @ngrx/store@latest`
+2. `ng add @ngrx/effects@latest`
+3. `ng add @ngrx/schematics@latest`
+4. `ng add @ngrx/store-devtools@latest`
