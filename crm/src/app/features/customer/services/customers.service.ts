@@ -19,4 +19,21 @@ export class CustomersService {
   getAll(): Observable<Customers[]> {
     return this.#http.get<Customers[]>(url);
   }
+
+  getById(id: number): Observable<Customers[]> {
+    return this.#http.get<Customers[]>(url + id);
+  }
+
+  postOne(customer: Partial<Customers>): Observable<Customers> {
+    return this.#http.post<Customers>(url, customer);
+  }
+  
+  putOne(customer: Customers): Observable<Customers> {
+    return this.#http.put<Customers>(url + customer.id, customer);
+  }
+  
+  deleteById(id: number): Observable<void> {
+    return this.#http.delete<void>(url + id);
+  }
+  
 }

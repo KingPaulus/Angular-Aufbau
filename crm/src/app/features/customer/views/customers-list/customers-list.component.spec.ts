@@ -1,27 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CustomersListComponent } from './customers-list.component';
 import { CustomersService } from '../../services/customers.service';
-import { of } from 'rxjs';
+import { createCustomerServiceMock } from '../../../../../_mocks_/services/customer.service.mock';
 
 describe('CustomersListComponent', () => {
   let component: CustomersListComponent;
   let fixture: ComponentFixture<CustomersListComponent>;
-  let getAll: () => unknown;
+  let customersService: jasmine.SpyObj<CustomersService>;
 
   beforeEach(async () => {
-    getAll = jasmine.createSpy('getAll').and.returnValues(of([]));
+    //getAll = jasmine.createSpy('getAll').and.returnValues(of());
+    customersService = createCustomerServiceMock();
 
     await TestBed.configureTestingModule({
       imports: [CustomersListComponent],
       providers: [
         {
           provide: CustomersService,
-          useValue: {
-            getAll: () => {
-              return of([]);
-            }
-          }
+          useValue: customersService,
+          /*useValue: {
+            getAll
+          } */
         }
       ]
     })
@@ -42,7 +41,7 @@ describe('CustomersListComponent', () => {
     })
 
     it('should return Customers',() => {
-      expect(getAll).toHaveBeenCalled();
+      expect(customersService.getAll).toHaveBeenCalled();
     })
   })
 });
