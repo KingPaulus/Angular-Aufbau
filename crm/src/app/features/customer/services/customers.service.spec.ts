@@ -123,7 +123,7 @@ describe('CustomersService', () => {
   
       const req = httpTesting.expectOne(deleteById);
       expect(req.request.method).toBe('DELETE');
-      req.flush({});
+      req.flush(null);
   
       expect(await responsePromise).toBeNull();
       httpTesting.verify();

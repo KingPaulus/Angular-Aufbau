@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Kreditlimit</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(customer of tableData; track customer.id) {
+        <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.name }}</td>
+            <td class="text-end">{{ customer.credit_limit | currency:'EUR':'symbol':'1.2-2' }}</td>
+            <td class="text-end">
+                <button class="btn btn-danger btn-sm">Löschen</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
