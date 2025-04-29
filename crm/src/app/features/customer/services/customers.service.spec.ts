@@ -5,7 +5,6 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { provideHttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { customersMock } from '../../../../_mocks_/api/customers';
-import { Customers } from '../model/customers';
 
 describe('CustomersService', () => {
   let service: CustomersService;
@@ -38,7 +37,7 @@ describe('CustomersService', () => {
 
       const req = httpTesting.expectOne(url);
       expect(req.request.method).toBe('GET');
-      req.flush(customersMock); // ✅ korrekt
+      req.flush(customersMock);
       expect(await responesPromise).toEqual(customersMock);
 
 
@@ -73,18 +72,23 @@ describe('CustomersService', () => {
     });
   
     it('should work', async () => {
-      const customer: Partial<Customers> = customersMock[0];
-      delete customer.id;
+      const customer = {
+        name: 'Neukunde',
+        credit_limit: 999
+      };
+    
       const response$ = service.postOne(customer);
       const responsePromise = firstValueFrom(response$);
-  
+    
       const req = httpTesting.expectOne(url);
       expect(req.request.method).toBe('POST');
-      req.flush(customersMock[0]);
-  
-      expect(await responsePromise).toEqual(customersMock[0]);
+      req.flush({ ...customer, id: 99 }); // Server liefert ID
+    
+      expect(await responsePromise).toEqual({ ...customer, id: 99 });
+    
       httpTesting.verify();
     });
+    
   });
   
   describe('putOne', () => {

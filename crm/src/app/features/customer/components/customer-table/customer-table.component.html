@@ -14,7 +14,7 @@
             <td>{{ customer.name }}</td>
             <td class="text-end">{{ customer.credit_limit | currency:'EUR':'symbol':'1.2-2' }}</td>
             <td class="text-end">
-                <button class="btn btn-danger btn-sm">Löschen</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteCustomer(customer.id)">Löschen</button>
             </td>
         </tr>
     }
