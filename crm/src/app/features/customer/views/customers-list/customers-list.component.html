@@ -1,2 +1,14 @@
+@let loading = (loadingState$ | async);
+
+<div class="d-flex justify-content-between">
+    <button class="btn btn-primary">Neuer Kunde</button>
+    <button class="btn btn-outline-secondary" (click)="loadCustomers()">Aktualisieren</button>
+</div>
+
 <h2>Übersicht</h2>
-<app-customer-table [tableData]="customers"></app-customer-table>
+
+@if(loading) {
+    <app-loading-indicator></app-loading-indicator>
+} @else {
+    <app-customer-table [tableData]="(customers$ | async )"></app-customer-table>
+}

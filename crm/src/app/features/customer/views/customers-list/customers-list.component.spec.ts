@@ -37,7 +37,7 @@ describe('CustomersListComponent', () => {
 
   describe('loadCustomers', () => {
     it('should exist',() => {
-      expect(component.loadCustomers).toBeTruthy();
+      expect(component.customers$).toBeTruthy();
     })
 
     it('should return Customers',() => {

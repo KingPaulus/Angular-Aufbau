@@ -8,6 +8,8 @@ import localeDe from '@angular/common/locales/de';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { customersFeature } from './features/customer/store/reducers/customer.reducer';
+import { CustomerEffects } from './features/customer/store/effects/customer.effects';
 
 registerLocaleData(localeDe);
 
@@ -18,5 +20,16 @@ export const appConfig: ApplicationConfig = {
     {
         provide: LOCALE_ID,
         useValue: 'de-DE'
-    }, provideStore(), provideEffects(), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })]
+    },
+    provideStore(),
+    provideStore({
+      [customersFeature.name]: customersFeature.reducer
+    }),
+    provideEffects(
+      [
+        CustomerEffects
+      ]
+    ),
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
+  ]
 };

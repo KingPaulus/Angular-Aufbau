@@ -1,27 +1,39 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { CustomersService } from '../../services/customers.service';
-import { Customers } from '../../model/customers';
-import { JsonPipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { Customer } from '../../model/customer';
 import { CustomerTableComponent } from "../../components/customer-table/customer-table.component";
+import { Store } from '@ngrx/store';
+import { SelectCustomerLoadingState, selectCustomers } from '../../store/selectors/customer.selectors';
+import { AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { LoadingIndicatorComponent } from "../../../../components/loading-indicator/loading-indicator.component";
+import { CustomerActions } from '../../store/actions/customer.actions';
 
 @Component({
   selector: 'app-customers-list',
   imports: [
-    JsonPipe,
-    CustomerTableComponent
+    AsyncPipe,
+    CustomerTableComponent,
+    LoadingIndicatorComponent
 ],
   templateUrl: './customers-list.component.html',
   styleUrl: './customers-list.component.scss'
 })
-export class CustomersListComponent implements OnInit {
+export class CustomersListComponent {
+  
+  // #customerService = inject(CustomersService)
+  #store = inject(Store)
 
-  customers: Customers[] = []; 
+  loadingState$ = this.#store.select(SelectCustomerLoadingState);
+  customers$: Observable<Customer[]> = this.#store.select((selectCustomers));
 
-  ngOnInit(): void {
-    this.loadCustomers();
+  loadCustomers() {
+    this.#store.dispatch(CustomerActions.loadCustomers());
   }
 
-  #customerService = inject(CustomersService)
+
+  /* ngOnInit(): void {
+    this.loadCustomers();
+  }
 
   loadCustomers() {
     this.#customerService.getAll().subscribe({
@@ -29,5 +41,5 @@ export class CustomersListComponent implements OnInit {
         this.customers = customers;
       }
     })
-  }
+  } */
 }
