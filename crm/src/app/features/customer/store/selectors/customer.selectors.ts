@@ -19,3 +19,10 @@ export const selectCustomers = createSelector(
         return state.customers;
     }
 );
+
+export const selectCustomerErrorState = createSelector(
+    selectCustomerState,
+    (state): null | string => {
+        return state.error;
+    }
+);

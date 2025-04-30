@@ -18,10 +18,13 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
+
+  // Load Customer
   on(CustomerActions.loadCustomers, (state): State => {
     return {
       ...state, //Spread-Operator
-      loading: true
+      loading: true,
+      error: null,
     }
   }),
   on(CustomerActions.loadCustomersSuccess, (state, {customers}): State => {
@@ -31,6 +34,15 @@ export const reducer = createReducer(
       loading: false
     }
   }),
+  on(CustomerActions.loadCustomersFailure, (state, {error}) => {
+    return {
+      ...state,
+      loading: false,
+      error
+    }
+  }),
+
+  // Delete Customer
   on(CustomerActions.deleteCustomer, (state) => {
     return {
       ...state,
@@ -45,7 +57,66 @@ export const reducer = createReducer(
         return customer.id !== id
       })
     }
-  })
+  }),
+  on(CustomerActions.deleteCustomerFailure, (state, {error}) => {
+    return {
+      ...state,
+      loading: false,
+      error
+    }
+  }),
+
+  // Create Customer
+  on(CustomerActions.createCustomer, (state) => {
+    return {
+      ...state,
+      loading: true,
+      error: null,
+    }
+  }),
+  on(CustomerActions.createCustomerSuccess, (state, { customer }) => {
+    return {
+      ...state,
+      loading: false,
+      customers: [
+        ...state.customers,
+        customer
+      ],
+    }
+  }),
+  on(CustomerActions.createCustomerFailure, (state, {error}) => {
+    return {
+      ...state,
+      loading: false,
+      error
+    }
+  }),
+
+  // Update Customer
+  on(CustomerActions.updateCustomer, (state) => {
+    return {
+      ...state,
+      loading: true,
+      error: null,
+    }
+  }),
+  on(CustomerActions.updateCustomerSuccess, (state, { customer }) => {
+    return {
+      ...state,
+      customers: [
+        ...state.customers,
+        customer
+      ],
+      loading: true,
+    }
+  }),
+  on(CustomerActions.updateCustomerFailure, (state, {error}) => {
+    return {
+      ...state,
+      loading: false,
+      error
+    }
+  }),
 );
 
 export const customersFeature = createFeature({

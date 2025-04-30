@@ -24,7 +24,7 @@ export class CustomersService {
     return this.#http.get<Customer[]>(url + id);
   }
 
-  postOne(customer: Omit<Customer, 'id'>): Observable<Customer> {
+  postOne(customer: Partial<Customer>): Observable<Customer> {
     return this.#http.post<Customer>(url, customer);
   }
   

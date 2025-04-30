@@ -4,6 +4,7 @@ import { catchError, map, exhaustMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { CustomerActions } from '../actions/customer.actions';
 import { CustomersService } from '../../services/customers.service';
+import { Customer } from '../models/customer.model';
 
 
 @Injectable()
@@ -36,6 +37,30 @@ export class CustomerEffects {
       )
     );
   });
+
+  createCustomer$ = createEffect(() => {
+    return this.#actions$.pipe(
+      ofType(CustomerActions.createCustomer),
+      exhaustMap(({customer}) =>
+       
+        this.#customerService.postOne(customer).pipe(
+          map((customer: Customer) => CustomerActions.createCustomerSuccess({ customer })),
+          catchError((error: Error) => of(CustomerActions.createCustomerFailure({ error: error.message }))))
+      )
+    );
+  })
+
+  updateCustomer$ = createEffect(() => {
+    return this.#actions$.pipe(
+      ofType(CustomerActions.updateCustomer),
+      exhaustMap(({customer}) =>
+       
+        this.#customerService.putOne(customer).pipe(
+          map((customer: Customer) => CustomerActions.updateCustomerSuccess({ customer })),
+          catchError((error: Error) => of(CustomerActions.updateCustomerFailure({ error: error.message }))))
+      )
+    );
+  })
 
 
   
