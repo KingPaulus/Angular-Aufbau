@@ -7,13 +7,15 @@ import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { LoadingIndicatorComponent } from "../../../../components/loading-indicator/loading-indicator.component";
 import { CustomerActions } from '../../store/actions/customer.actions';
+import { ErrorBoxComponent } from "../../../../components/error-box/error-box.component";
 
 @Component({
   selector: 'app-customers-list',
   imports: [
     AsyncPipe,
     CustomerTableComponent,
-    LoadingIndicatorComponent
+    LoadingIndicatorComponent,
+    ErrorBoxComponent
 ],
   templateUrl: './customers-list.component.html',
   styleUrl: './customers-list.component.scss'
