@@ -5,12 +5,14 @@ import { of } from 'rxjs';
 import { CustomerActions } from '../actions/customer.actions';
 import { CustomersService } from '../../services/customers.service';
 import { Customer } from '../models/customer.model';
+import { Router } from '@angular/router';
 
 
 @Injectable()
 export class CustomerEffects {
   #actions$ = inject(Actions);
   #customerService = inject(CustomersService);
+  #router = inject(Router)
 
   constructor(private actions$: Actions) {}
 
@@ -48,7 +50,21 @@ export class CustomerEffects {
           catchError((error: Error) => of(CustomerActions.createCustomerFailure({ error: error.message }))))
       )
     );
-  })
+  });
+
+  redirectToDashboard$ = createEffect(() => {
+    return this.#actions$.pipe(
+      ofType(
+        CustomerActions.createCustomerSuccess,
+        CustomerActions.updateCustomerSuccess,
+      ),
+      map(() => {
+        this.#router.navigate(['/dashboard'])
+      })
+    )
+  }, {
+    dispatch: false
+  });
 
   updateCustomer$ = createEffect(() => {
     return this.#actions$.pipe(

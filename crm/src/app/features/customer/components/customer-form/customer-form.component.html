@@ -1,0 +1,16 @@
+<form [formGroup]="customerGroup" (ngSubmit)="formSubmitHandler()">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" id="name" class="form-control" formControlName="name">
+    </div>
+    <div class="mb-3">
+        <label for="credit_limit" class="form-label">Kredit Limit</label>
+        <input type="text" name="credit_limit" id="credit_limit" class="form-control" formControlName="credit_limit">
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-primary" [disabled]="customerGroup.invalid" type="submit">
+            <ng-content></ng-content>
+        </button>
+    </div>
+</form>

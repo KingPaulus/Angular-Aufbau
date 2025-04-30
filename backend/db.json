@@ -19,6 +19,16 @@
       "id": 4,
       "name": "Lee",
       "credit_limit": 300
+    },
+    {
+      "name": "Paul",
+      "credit_limit": "10000",
+      "id": 5
+    },
+    {
+      "name": "Paul",
+      "credit_limit": "10000",
+      "id": 6
     }
   ]
 }

@@ -1,0 +1,16 @@
+@let loading = (loadingState$ | async);
+@let error = (error$ | async);
+
+<h2 class="display-5">Neuer Kunde</h2>
+
+@if(error !== null) {
+    <app-error-box>
+{{ error }}
+    </app-error-box>
+}
+
+@if(loading) {
+    <app-loading-indicator></app-loading-indicator>
+} @else if(error === null) {
+    <app-customer-form (customerSubmit)="createCustomer($event)">Hinzufügen</app-customer-form>
+}

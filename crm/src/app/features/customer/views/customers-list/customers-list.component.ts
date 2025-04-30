@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { LoadingIndicatorComponent } from "../../../../components/loading-indicator/loading-indicator.component";
 import { CustomerActions } from '../../store/actions/customer.actions';
 import { ErrorBoxComponent } from "../../../../components/error-box/error-box.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-customers-list',
@@ -15,7 +16,8 @@ import { ErrorBoxComponent } from "../../../../components/error-box/error-box.co
     AsyncPipe,
     CustomerTableComponent,
     LoadingIndicatorComponent,
-    ErrorBoxComponent
+    ErrorBoxComponent,
+    RouterLink,
 ],
   templateUrl: './customers-list.component.html',
   styleUrl: './customers-list.component.scss'
