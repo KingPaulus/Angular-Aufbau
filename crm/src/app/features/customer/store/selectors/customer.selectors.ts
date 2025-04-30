@@ -20,6 +20,19 @@ export const selectCustomers = createSelector(
     }
 );
 
+// Selector Factory
+export const selectCustomerById = function(id: string) {
+    return createSelector(
+        selectCustomerState,
+        (state): Customer | undefined => {
+            return state.customers.find((customer) => {
+                // type umwandlung mit + vor id
+                return customer.id === +id
+            })
+        }
+    )
+}
+
 export const selectCustomerErrorState = createSelector(
     selectCustomerState,
     (state): null | string => {

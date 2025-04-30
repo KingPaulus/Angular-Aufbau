@@ -24,5 +24,11 @@
 
         </ul>
       </div>
+
+      @if(loggedIn$ | async) {
+        <button class="btn btn-outline-secondary" (click)="logout()">Logout</button>
+      } @else {
+        <button class="btn btn-info" routerLink="/login">Login</button>
+      }
     </div>
   </nav>

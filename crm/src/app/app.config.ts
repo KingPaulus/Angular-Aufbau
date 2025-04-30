@@ -10,6 +10,8 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { customersFeature } from './features/customer/store/reducers/customer.reducer';
 import { CustomerEffects } from './features/customer/store/effects/customer.effects';
+import { AuthEffects } from './features/auth/store/effects/auth.effects';
+import { authsFeature } from './features/auth/store/reducers/auth.reducer';
 
 registerLocaleData(localeDe);
 
@@ -21,13 +23,15 @@ export const appConfig: ApplicationConfig = {
         provide: LOCALE_ID,
         useValue: 'de-DE'
     },
-    provideStore(),
+    provideStore({}),
     provideStore({
-      [customersFeature.name]: customersFeature.reducer
+      [customersFeature.name]: customersFeature.reducer,
+      [authsFeature.name]: authsFeature.reducer,
     }),
     provideEffects(
       [
-        CustomerEffects
+        CustomerEffects,
+        AuthEffects,
       ]
     ),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })

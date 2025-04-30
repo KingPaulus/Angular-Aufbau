@@ -26,7 +26,6 @@ export class CustomerCreateComponent {
   loadingState$ = this.#store.select(SelectCustomerLoadingState);
   error$: Observable<string | null> = this.#store.select(selectCustomerErrorState);
 
-
   createCustomer(customer: Partial<Customer>) {
     this.#store.dispatch(CustomerActions.createCustomer({customer}));
   }

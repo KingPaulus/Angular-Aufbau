@@ -1,1 +1,16 @@
-<p>customer-edit works!</p>
+@let loading = (loadingState$ | async);
+@let error = (error$ | async);
+
+<h2 class="display-5">Kunde {{ id }} Bearbeiten</h2>
+
+@if(error !== null) {
+    <app-error-box>
+{{ error }}
+    </app-error-box>
+}
+
+@if(loading) {
+    <app-loading-indicator></app-loading-indicator>
+} @else if(error === null) {
+    <app-customer-form [formData]="customer$ | async" (customerSubmit)="edtiCustomer($event)">Bearbeiten</app-customer-form>
+}

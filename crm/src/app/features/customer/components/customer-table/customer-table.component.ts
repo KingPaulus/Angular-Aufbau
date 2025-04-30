@@ -3,12 +3,14 @@ import { Customer } from '../../model/customer';
 import { CurrencyPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { CustomerActions } from '../../store/actions/customer.actions';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-customer-table',
   imports: [
-    CurrencyPipe
+    CurrencyPipe,
+    RouterLink
   ],
   templateUrl: './customer-table.component.html',
   styleUrl: './customer-table.component.scss'
